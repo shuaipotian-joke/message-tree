@@ -52,7 +52,7 @@ public class SecurityConfig {
         configuration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS"));
         configuration.setAllowCredentials(true);
         // Allow requests from the specific IP address
-        configuration.setAllowedOrigins(List.of("http://159.138.29.140"));
+        configuration.setAllowedOrigins(List.of("*"));
 
         UrlBasedCorsConfigurationSource source = new UrlBasedCorsConfigurationSource();
         source.registerCorsConfiguration("/**", configuration);
