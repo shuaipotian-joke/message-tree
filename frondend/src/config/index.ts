@@ -1,6 +1,13 @@
+
+const isProduction = import.meta.env.PROD;
+const useProxy = import.meta.env.VITE_USE_PROXY === 'true';
+
 export const config = {
   api: {
-    baseUrl: import.meta.env.VITE_API_BASE_URL || 'http://localhost:9001/api',
+
+    baseUrl: (isProduction || useProxy)
+      ? '/api/proxy/api'  
+      : import.meta.env.VITE_API_BASE_URL || 'http://localhost:9001/api',
     host: import.meta.env.VITE_API_HOST || 'localhost',
     port: import.meta.env.VITE_API_PORT || '9001',
     protocol: import.meta.env.VITE_API_PROTOCOL || 'http',
